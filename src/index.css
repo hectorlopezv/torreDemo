@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
 *, *::after, *::before {
     margin: 0;
     padding: 0;
@@ -18,3 +19,65 @@
     box-sizing: border-box;
     font-family: 'DM Mono', monospace;
   }
+
+.title{
+  font-size: 15rem;
+  height:80vh;
+  line-height: 20vh;
+
+  color: #fcedd8;
+  font-family: 'Niconne', cursive;
+  font-weight: 700;
+  text-shadow: 5px 5px 0px #eb452b, 
+              10px 10px 0px #efa032, 
+              15px 15px 0px #46b59b, 
+              20px 20px 0px #017e7f, 
+              25px 25px 0px #052939, 
+              30px 30px 0px #c11a2b, 
+              35px 35px 0px #c11a2b, 
+              40px 40px 0px #c11a2b, 
+              45px 45px 0px #c11a2b;
+}
+
+.Home {
+  background: #d52e3f;
+  text-align: center;
+  height: 100vh;
+}
+
+
+
+
+
+
+a{
+  
+  display: block;
+  width: 352px;
+  height: 74px;
+  border-radius: 1110px;
+  font-size: 5rem;
+  line-height: 66px;
+  font-weight: bold;
+  text-decoration: none;
+  background: #333;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 3px solid #333;
+  transition: all .35s;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+a:hover{
+  border: 3px solid #2ecc71;
+  color: #2ecc71;
+
+}
+
