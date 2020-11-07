@@ -3,36 +3,40 @@ import Torre from '../assests/pictures/Torre.png';
 import {fetchTest} from '../API/Api';
 import { useQuery, QueryCache, ReactQueryCacheProvider } from 'react-query';
 import { ReactQueryDevtools } from "react-query-devtools";
-
+import CardList from '../Card/CardList';
+import Card from '../Card/Card';
 export interface DemoProps {    
 }
 
 const queryCache = new QueryCache();
 const Demo: React.FunctionComponent<DemoProps> = () => {
-   /*
-    return (  
-    <div className="Home">
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                         <img className="img-fluid  rounded" src={Torre} alt=""/>
-                    </div>
-                </div>
-            </div>  
-    </div>
-    );
-    */
    return (
-    <ReactQueryCacheProvider queryCache={queryCache}>
-      <Example />
-    </ReactQueryCacheProvider>
+    <div className="Home">
+    <div className="container">
+        <div className="row">
+            <div className="col">
+                 <img className="img-fluid  rounded" src={Torre} alt=""/>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col">
+            <ReactQueryCacheProvider queryCache={queryCache}>
+                <Example>
+                    <Card/>
+                </Example>
+            </ReactQueryCacheProvider>
+            </div>
+        </div>
+    </div>  
+</div>
+
   )
 }
 export interface ExampleProps {
     
 }
  
-const Example: React.FunctionComponent<ExampleProps> = () => {
+const Example: React.FunctionComponent<ExampleProps> = (props) => {
     const { data, error, isLoading, isError } = useQuery("repoData", fetchTest);
 
   if (isLoading) 
@@ -45,10 +49,10 @@ const Example: React.FunctionComponent<ExampleProps> = () => {
   }
   console.log(data);
   return (
-    <div>
-      
-      <ReactQueryDevtools initialIsOpen />
-    </div>
+      <CardList>
+            {props.children}
+      </CardList>
+
   );
 }
  

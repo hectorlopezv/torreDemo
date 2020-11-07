@@ -11,6 +11,8 @@ const instance = axios.create({
   });
 
 export const fetchTest = () => {
-  
-return fetch('https://yacdn.org/proxy/https://torre.bio/api/bios/hectorvmlopez').then(res => res.json());
+  const baseURL = 'https://yacdn.org/proxy/https://torre.bio/api'
+
+
+return fetch(baseURL + '/bios/hectorvmlopez').then(res => res.json());
 }
