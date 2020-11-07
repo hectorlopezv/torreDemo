@@ -43,6 +43,7 @@
   background: #d52e3f;
   text-align: center;
   height: 100vh;
+  
 }
 
 
@@ -50,7 +51,7 @@
 
 
 
-a{
+.Home_link{
   
   display: block;
   width: 352px;
@@ -60,7 +61,7 @@ a{
   line-height: 66px;
   font-weight: bold;
   text-decoration: none;
-  background: #333;
+  background: #052939;
   text-align: center;
   color: #fff;
   text-transform: uppercase;
@@ -75,7 +76,7 @@ a{
 
 
 
-a:hover{
+.Home_link:hover{
   border: 3px solid #2ecc71;
   color: #2ecc71;
 

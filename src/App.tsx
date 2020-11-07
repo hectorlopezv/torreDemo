@@ -5,23 +5,22 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import './App.css';
-import Card from './Card/Card';
+
+import Demo from './Demo/Demo';
 
 function App() {
   return (
     <Router>
-       <Switch>
-
+       <Switch>   
           <Route path="/demo">
-            <Card/>
-          </Route>
-          
+            <Demo />
+          </Route> 
           <Route path="/">
             <Home />
           </Route>
+
 
         </Switch>
     </Router>

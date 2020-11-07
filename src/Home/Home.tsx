@@ -1,5 +1,7 @@
 import React from 'react';
-
+import {
+    Link
+  } from "react-router-dom";
 export interface HomeProps {
     
 }
@@ -17,7 +19,7 @@ const Home: React.FunctionComponent<HomeProps> = () => {
 
                 <div className="row ml-9">
                     <div className="container">
-                        <a href="#">Hover Me!</a>
+                        <Link  className="Home_link" to="/demo">Click Me!</Link>
                     </div>
                 </div>
                 
