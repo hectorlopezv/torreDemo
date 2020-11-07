@@ -1,12 +1,12 @@
 import React from 'react'
 import Torre from '../assests/pictures/Torre.png';
-
+import {fetchTest} from '../API/Api';
 import { useQuery, QueryCache, ReactQueryCacheProvider } from 'react-query';
 import { ReactQueryDevtools } from "react-query-devtools";
 
-export interface DemoProps {
-    
+export interface DemoProps {    
 }
+
 const queryCache = new QueryCache();
 const Demo: React.FunctionComponent<DemoProps> = () => {
    /*
@@ -33,23 +33,20 @@ export interface ExampleProps {
 }
  
 const Example: React.FunctionComponent<ExampleProps> = () => {
-    const { data, error, isLoading, isError, } = useQuery("repoData", () =>
-    fetch(
-      "https://api.github.com/repos/tannerlinsley/react-query"
-    ).then((res) => res.json())
-  );
+    const { data, error, isLoading, isError } = useQuery("repoData", fetchTest);
 
-  if (isLoading) return <h1>Loading</h1>;
+  if (isLoading) 
+  {
+      return <h1>Loading</h1>;
+  }
 
-  if (error) return <h1>An error has occurred"</h1>;
-
+  if (error){
+    return <h1>An error has occurred"</h1>;
+  }
+  console.log(data);
   return (
     <div>
-      <h1>{data.name}</h1>
-      <p>{data.description}</p>
-      <strong>👀 {data.subscribers_count}</strong>{" "}
-      <strong>✨ {data.stargazers_count}</strong>{" "}
-      <strong>🍴 {data.forks_count}</strong>
+      
       <ReactQueryDevtools initialIsOpen />
     </div>
   );
