@@ -1,6 +1,6 @@
 import React from 'react';
 import { GiWeightLiftingUp } from 'react-icons/gi';
-import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
+
 
 import { CgWorkAlt } from 'react-icons/cg';
 

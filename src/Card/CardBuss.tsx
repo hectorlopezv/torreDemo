@@ -6,33 +6,48 @@ import Links from '../Links/Links';
 import {CgDollar} from 'react-icons/cg';
 import {GiTimeBomb} from 'react-icons/gi';
 import Stats from '../Stats/Stats';
+import Skill from '../Skills/Skill';
 
 export interface CardBussProps {
-    
+    nameJob:any;
+    orgname:any;
+    orgpicture:any;
+    country:any;
+    deadline:any;
+    type:any;
+    idJob:any;
+    compensation:any;
+    skills:any;
 }
  
 const CardBuss: React.FunctionComponent<CardBussProps> = (props) => {
-    return (   <div className={classes.card + ' d-flex justify-content-around'}>
+   
+
+    
+    return (   <div className={classes.cardBuss + ' d-flex justify-content-between'}>
     <div className={classes.card_header}>
-        <p>{"heloo"}</p>
-         
-        <h2 className="mt-n5 ">{"heloo"}</h2>
+        <p >{props.orgname} - {props.idJob}</p>
+        <h2>{props.nameJob}</h2>
     </div>
 
-    <div className="d-flex mt-3 mb-3 ">
-        <img className={classes.picThumbnail}  alt=""/>
+    <div className="d-flex mt-3 mb-0 ">
+        <img className={classes.bussThumbnail} src={props.orgpicture} alt=""/>
         <div className="d-flex flex-column">
-            <div>{"heloo"}</div>
-            <div><GiTimeBomb className={classes.icon_timezone}/> {"heloo"}</div>
-           <div>
-               <CgDollar className={classes.icon_money}/> {"heloo"}/{"heloo"}
+            <div>{props.type}</div>
+            <div className="ml-n5"><GiTimeBomb className={classes.icon_timezone}/> {props.deadline.slice(0, 10)}</div>
+           <div className="ml-n1">
+            <CgDollar className={classes.icon_money}/>{props.compensation.minAmount}-{props.compensation.maxAmount}/{props.compensation.periodicity.slice(0,4)}
            </div>
               
             <div className="mt-1">
-                Remote - {"heloo"}
+                Remote {props.country? <span>- </span> : null}{props.country ? props.country : null}
             </div>
         </div>
     </div>
+
+    <Skill skills={props.skills}/>
+
+
 
     
 

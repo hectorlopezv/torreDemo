@@ -20,6 +20,7 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
    
     const jobsHandler = (event: any) => {
         setJob(event.target.value);
+        console.log(Job);
         if (Job.length < 1){
             setSearch(false)
         }
@@ -112,8 +113,12 @@ const Jobs: React.FunctionComponent<JobsProps> = (props) => {
 
     return (  
         <>
-            {results.map((entry:any) => {
-                return <CardBuss/>
+            {results.map((entry:any, index:number) => {
+                return <CardBuss key={index} nameJob={entry.objective} 
+                orgname={entry.organizations[0].name} orgpicture={entry.organizations[0].picture}
+                country={entry.locations[0]} deadline={entry.deadline}
+                type={entry.type} idJob={entry.id} compensation={entry.compensation.data}
+                skills={entry.skills}/>
 
             })}
         </>

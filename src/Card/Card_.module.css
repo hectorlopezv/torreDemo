@@ -7,6 +7,12 @@
     width: 43%;
 }
 
+.bussThumbnail{
+    border-radius: 50%;
+    display: block;
+    width: 43%;
+}
+
 .icon_money {
     font-size: 25px;
 }
@@ -36,7 +42,26 @@
     background: linear-gradient(90deg,#201c29,#201c29 1px,#17141d 0,#17141d);
     
 }
+.transitiony{
+    transform: translateY(-3.4rem);
+}
+.cardBuss {
+    height: 410px;
+    width: 40px;
+    min-width: 250px;
+    padding: .8rem;
+    border-radius: 16px;
+    background: #17141d;
+    box-shadow: -1rem 0 3rem #000;
 
+    flex-direction: column;
+    transition: .2s;
+    margin: 0;
+    scroll-snap-align: start;
+    position: relative;
+    z-index: 9999;
+
+}
 .card {
     height: 350px;
     width: 40px;
@@ -54,6 +79,21 @@
     z-index: 9999;
 
 }
+
+.cardBuss:hover {
+    transform: translateY(-1rem);
+    
+}
+
+.cardBuss:hover~.cardBuss {
+    transform: translateX(130px);
+}
+
+
+.cardBuss:not(:first-child){
+    margin-left: -130px;
+}
+
 
 .card:hover {
     transform: translateY(-1rem);
