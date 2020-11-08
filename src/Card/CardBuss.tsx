@@ -34,9 +34,9 @@ const CardBuss: React.FunctionComponent<CardBussProps> = (props) => {
         <img className={classes.bussThumbnail} src={props.orgpicture} alt=""/>
         <div className="d-flex flex-column">
             <div>{props.type}</div>
-            <div className="ml-n5"><GiTimeBomb className={classes.icon_timezone}/> {props.deadline.slice(0, 10)}</div>
+            <div className="ml-n5"><GiTimeBomb className={classes.icon_timezone}/> {props.deadline? props.deadline.slice(0, 10): "Not Found"}</div>
            <div className="ml-n1">
-            <CgDollar className={classes.icon_money}/>{props.compensation.minAmount}-{props.compensation.maxAmount}/{props.compensation.periodicity.slice(0,4)}
+            <CgDollar className={classes.icon_money}/>{props.compensation.minAmount?props.compensation.minAmount : 'Not Found'}-{props.compensation.maxAmount?props.compensation.maxAmount: "Not Found"}/{props.compensation.periodicity.slice(0,4)}
            </div>
               
             <div className="mt-1">

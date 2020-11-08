@@ -28,7 +28,7 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
     }
 
     const buttonHandler = (event: any) => {
-        console.log('entro al button');
+
         setSearch(true);
     }
 
@@ -56,35 +56,39 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
         </div>
         
         <div className="row">
-            <div className="col d-flex ">
+            <Draggable>
+                <div className="col d-flex ">
 
-                <div>
-                    <Label basic>$</Label>
-                        <Input onChange={jobsHandler} transparent={false} list='languages' labelPosition='left'  type='text' placeholder='Choose language...' />
-                        <datalist id='languages'>
-                        <option value='react'>react</option>
-                        <option value='python'>python</option>
-                        <option value='javascript'>javascript</option>
-                        </datalist>
+                    <div>
+                            <div className="ui big basic label">$</div>
+                            <Input onChange={jobsHandler} transparent={false} list='languages' labelPosition='left'  type='text' placeholder='Choose language...' />
+                            <datalist id='languages'>
+                            <option value='react'>react</option>
+                            <option value='python'>python</option>
+                            <option value='javascript'>javascript</option>
+                            </datalist>
+                    </div>
+
+                    <Button  onClick={buttonHandler} size={"huge"} primary>Search</Button>
                 </div>
-
-                <Button  onClick={buttonHandler} size={"huge"} primary>Search</Button>
-            </div>
+            </Draggable>
         </div>
-
-        <div className="row">
+        <Draggable >
+         <div className="row">
             <div className="col">
-                {Search ?<ReactQueryCacheProvider queryCache={queryCache}>
+                {Search ?
+                
+                <ReactQueryCacheProvider queryCache={queryCache}>
                     <CardList>
 
                         <Jobs job={Job} />
 
                     </CardList>
                     
-                </ReactQueryCacheProvider> : <h1>NOP</h1>}
+                </ReactQueryCacheProvider> : <h1>Loading</h1>}
             </div>
         </div>
-
+        </Draggable >
     </div>  
 </div>
 
@@ -98,7 +102,7 @@ export interface JobsProps {
 }
  
 const Jobs: React.FunctionComponent<JobsProps> = (props) => {
-    console.log('en la funcion jobs', props.job)
+    
 
     const { data, error, isLoading } = useQuery("react", fetchJob.bind(this, props.job));
 
@@ -111,20 +115,28 @@ const Jobs: React.FunctionComponent<JobsProps> = (props) => {
       return <h1>An error has occurred"</h1>;
     }
     const {results} = data;
-    console.log(data);
+
 
 
     return (  
+      
         <>
             {results.map((entry:any, index:number) => {
-                return <CardBuss key={index} nameJob={entry.objective} 
-                orgname={entry.organizations[0] ? entry.organizations[0].name : 'Not Found'} orgpicture={entry.organizations[0] ? entry.organizations[0].picture : "Not Found"}
-                country={entry.locations[0]?entry.locations[0]: "Not found" } deadline={entry.deadline}
-                type={entry.type} idJob={entry.id} compensation={entry.compensation.data}
-                skills={entry.skills}/>
+                return (
+
+
+                        <CardBuss  key={index} nameJob={entry.objective} 
+                        orgname={entry.organizations[0] ? entry.organizations[0].name : 'Not Found'} orgpicture={entry.organizations[0] ? entry.organizations[0].picture : "Not Found"}
+                        country={entry.locations[0]?entry.locations[0]: "Not found" } deadline={entry.deadline}
+                        type={entry.type} idJob={entry.id} compensation={entry.compensation.data?entry.compensation.data: {minAmount: "Not Found", maxAmount: "Not Found", periodicity: "Not Found"}}
+                        skills={entry.skills}/>
+
+
+                );
 
             })}
         </>
+
     );
 }
  
