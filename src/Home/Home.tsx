@@ -16,10 +16,10 @@ const Home: React.FunctionComponent<HomeProps> = () => {
                         <p>Torre Demo Day</p>
                     </div>
                 </div>
-
+            
                 <div className="row ml-9">
                     <div className="container">
-                        <Link  className="Home_link" to="/demo">Click Me!</Link>
+                        <Link  className="Home_link" to="/demo" replace>Click Me!</Link>
                     </div>
                 </div>
                 

@@ -6,7 +6,7 @@ import Links from '../Links/Links';
 import {CgDollar} from 'react-icons/cg';
 import {GiTimeBomb} from 'react-icons/gi';
 import Stats from '../Stats/Stats';
-
+import './button.css';
 export interface CardProps {
     name_location:any
     name_person:any
@@ -25,12 +25,12 @@ const Card: React.FunctionComponent<CardProps> = (props) => {
 
     return (  
         
-        <div className={classes.card}>
+        <div className={classes.card + ' d-flex justify-content-around'}>
         <div className={classes.card_header}>
             <p>{props.name_person}</p>
             <Links
-            links={props.links}
-        />            
+                links={props.links}
+            />            
         <h2 className="mt-n5">{props.professionalHeadline}</h2>
         </div>
 
@@ -42,7 +42,7 @@ const Card: React.FunctionComponent<CardProps> = (props) => {
                <div>
                    <CgDollar className={classes.icon_money}/> {amount.data}/{typeSalary.data}
                </div>
-                <Language  languages={props.languages}/>
+                    <Language  languages={props.languages}/>
                 <div className="mt-1">
                     Remoto - {props.name_location}
                 </div>
