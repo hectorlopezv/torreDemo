@@ -6,6 +6,8 @@ import { useQuery, QueryCache, ReactQueryCacheProvider } from 'react-query';
 import { ReactQueryDevtools } from "react-query-devtools";
 import CardList from '../Card/CardList';
 import Card from '../Card/Card';
+import CardBuss from '../Card/CardBuss';
+
 
 import Draggable from 'react-draggable'; // The default
 import { Input, Label, Button } from 'semantic-ui-react';
@@ -18,13 +20,18 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
    
     const jobsHandler = (event: any) => {
         setJob(event.target.value);
+        if (Job.length < 1){
+            setSearch(false)
+        }
     }
 
     const buttonHandler = (event: any) => {
         console.log('entro al button');
-
+        setSearch(true);
     }
+
    const [Job, setJob] = useState('react');
+   const [Search, setSearch] = useState(false);
 
    const nodeRef = React.useRef(null);
     return (
@@ -60,14 +67,19 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
                 </div>
 
                 <Button  onClick={buttonHandler} size={"huge"} primary>Search</Button>
-
-                
             </div>
         </div>
 
         <div className="row">
             <div className="col">
-                <h1>X2</h1>
+                {Search ?<ReactQueryCacheProvider queryCache={queryCache}>
+                    <CardList>
+
+                        <Jobs job={Job} />
+
+                    </CardList>
+                    
+                </ReactQueryCacheProvider> : <h1>NOP</h1>}
             </div>
         </div>
 
@@ -79,11 +91,12 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
 
 
 export interface JobsProps {
+    job:any;
     
 }
  
-const Jobs: React.FunctionComponent<JobsProps> = () => {
-    const { data, error, isLoading } = useQuery("react", fetchJob.bind('react'));
+const Jobs: React.FunctionComponent<JobsProps> = (props) => {
+    const { data, error, isLoading } = useQuery("react", fetchJob.bind(props.job));
 
     if (isLoading) 
     {
@@ -93,8 +106,18 @@ const Jobs: React.FunctionComponent<JobsProps> = () => {
     if (error){
       return <h1>An error has occurred"</h1>;
     }
+    const {results} = data;
     console.log(data);
-    return (  <h1>Jobs</h1>);
+
+
+    return (  
+        <>
+            {results.map((entry:any) => {
+                return <CardBuss/>
+
+            })}
+        </>
+    );
 }
  
 

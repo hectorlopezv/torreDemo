@@ -8,15 +8,15 @@ import {GiTimeBomb} from 'react-icons/gi';
 import Stats from '../Stats/Stats';
 import './button.css';
 export interface CardProps {
-    name_location:any
-    name_person:any
-    pictureThumbnail:any
-    zone:any
-    professionalHeadline:any
-    opportunities:any;
-    languages:any;
-    links:any;
-    stats:any;
+    name_location?:any
+    name_person?:any
+    pictureThumbnail?:any
+    zone?:any
+    professionalHeadline?:any
+    opportunities?:any;
+    languages?:any;
+    links?:any;
+    stats?:any;
 }
  
 const Card: React.FunctionComponent<CardProps> = (props) => {
@@ -31,7 +31,7 @@ const Card: React.FunctionComponent<CardProps> = (props) => {
             <Links
                 links={props.links}
             />            
-        <h2 className="mt-n5">{props.professionalHeadline}</h2>
+            <h2 className="mt-n5 ">{props.professionalHeadline}</h2>
         </div>
 
         <div className="d-flex mt-3 mb-3 ">
@@ -44,7 +44,7 @@ const Card: React.FunctionComponent<CardProps> = (props) => {
                </div>
                     <Language  languages={props.languages}/>
                 <div className="mt-1">
-                    Remoto - {props.name_location}
+                    Remote - {props.name_location}
                 </div>
             </div>
         </div>

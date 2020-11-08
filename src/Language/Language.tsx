@@ -6,7 +6,7 @@ export interface LanguageProps {
 }
  
 const Language: React.FunctionComponent<LanguageProps> = (props) => {
-    console.log(props.languages);
+
     //<img className={classes.language} alt="English" src="https://unpkg.com/language-icons/icons/en.svg"></img>
     return ( 
 

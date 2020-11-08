@@ -2,6 +2,7 @@ import React from 'react';
 import { GiBirdTwitter } from "react-icons/gi";
 import { DiGithubFull} from "react-icons/di";
 import { FiGithub} from "react-icons/fi";
+import { Link} from "react-router-dom";
 
 import classes from './Links.module.css';
 export interface LinksProps {
@@ -9,17 +10,11 @@ export interface LinksProps {
 }
  
 const Links: React.FunctionComponent<LinksProps> = (props) => {
-    console.log(props.links)
-    console.log(classes.icon + ' icon_twitter');
+   
     return ( 
-        <div className="d-flex mt-2 justify-content-between align-items-center">
+        <div className={"d-flex mt-2 justify-content-between align-items-center " + classes.top}>
             {props.links.map( (ln:any, index:number) => {
-                return <div className={'ml-2'} key={index}>
-                    <a href={ln.address} target="blank"> 
-                {ln.name === 'github' ? <GiBirdTwitter className={classes.icon +" "+ classes.icon_twitter}/> :  <FiGithub className={classes.icon +" "+ classes.icon_github}/>} 
-                       
-                    </a>
-                </div>
+                return <div className={'ml-2'} key={index}><a href={ln.address} target="blank"> {ln.name === 'twitter' ? <GiBirdTwitter className={classes.icon +" "+ classes.icon_twitter}/> :  <FiGithub className={classes.icon +" "+ classes.icon_github}/>} </a></div>
             })}
         </div>
 
