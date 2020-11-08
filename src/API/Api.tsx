@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const instance = axios.create({
     baseURL: 'https://thingproxy.freeboard.io/fetch/https://torre.bio/api/bios/hectorvmlopez',
     timeout: 1000,

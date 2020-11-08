@@ -1,58 +1,61 @@
 import React from 'react'
 import classes from './Card_.module.css';
 import Avatar from './Avatar.png';
+import Language from '../Language/Language';
+import Links from '../Links/Links';
+import {CgDollar} from 'react-icons/cg';
+import {GiTimeBomb} from 'react-icons/gi';
+import Stats from '../Stats/Stats';
+
 export interface CardProps {
-    
+    name_location:any
+    name_person:any
+    pictureThumbnail:any
+    zone:any
+    professionalHeadline:any
+    opportunities:any;
+    languages:any;
+    links:any;
+    stats:any;
 }
  
-const Card: React.FunctionComponent<CardProps> = () => {
+const Card: React.FunctionComponent<CardProps> = (props) => {
+    const personExpect =  props.opportunities.filter((el:any) =>  el.field === 'desirable-compensation-currency' || el.field === 'desirable-compensation-amount' || el.field === 'desirable-compensation-periodicity');
+    const [currency, amount, typeSalary] = personExpect;/*get Money information Person*/
+
     return (  
         
         <div className={classes.card}>
         <div className={classes.card_header}>
-            <p>Whale and Jaguar</p>
-            <h2>Fullstack Developer</h2>
-        </div>
-        <div>
-            Remoto - Pais
-        </div>
-        <div>
-            Dinero
-        </div>
-        <div className="Tags">
-            <a href="">Badge1</a>
-            <a href="">Badge2</a>
-            <a href="">Badge3</a>
+            <p>{props.name_person}</p>
+            <Links
+            links={props.links}
+        />            
+        <h2 className="mt-n5">{props.professionalHeadline}</h2>
         </div>
 
-
-        <div className={classes.card_author}>
-            <a href="#" className={classes.author_avatar }>
-                <img src={Avatar} alt=""/>
-            </a>
-            <svg className={classes.half_circle} viewBox="0 0 106 57">
-                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
-            </svg>
-            <div className={classes.author_name}>
-                <div className={classes.author_name_prefix}>Miebro_1</div>
-                <a href="">Miembro 1</a>
+        <div className="d-flex mt-3 mb-3 ">
+            <img className={classes.picThumbnail} src={props.pictureThumbnail} alt=""/>
+            <div className="d-flex flex-column">
+                <div>{props.name_location}</div>
+                <div><GiTimeBomb className={classes.icon_timezone}/> {props.zone}</div>
+               <div>
+                   <CgDollar className={classes.icon_money}/> {amount.data}/{typeSalary.data}
+               </div>
+                <Language  languages={props.languages}/>
+                <div className="mt-1">
+                    Remoto - {props.name_location}
+                </div>
             </div>
-
-        </div>
-        <div className={classes.card_author}>
-            <a href="#" className={classes.author_avatar }>
-                <img src={Avatar} alt=""/>
-            </a>
-            <svg className={classes.half_circle} viewBox="0 0 106 57">
-                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
-            </svg>
-            <div className={classes.author_name}>
-                <div className={classes.author_name_prefix}>Miembro_2</div>
-                <a href="">Miembro 2</a>
-            </div>
-
         </div>
 
+        
+        <Stats
+            stats={props.stats}
+        />
+
+
+    
         </div>
     );
 }

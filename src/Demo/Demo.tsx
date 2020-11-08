@@ -10,7 +10,11 @@ export interface DemoProps {
 
 const queryCache = new QueryCache();
 const Demo: React.FunctionComponent<DemoProps> = () => {
-   return (
+    //fetch('https://yacdn.org/proxy/' + 'https://torre.co/es/search/people?q=opento%3Afull-time-employment').then(res => console.log(res.json()));
+   
+    
+   
+    return (
     <div className="Home">
     <div className="container">
         <div className="row">
@@ -21,9 +25,7 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
         <div className="row">
             <div className="col">
             <ReactQueryCacheProvider queryCache={queryCache}>
-                <Example>
-                    <Card/>
-                </Example>
+                <Example/>    
             </ReactQueryCacheProvider>
             </div>
         </div>
@@ -48,11 +50,21 @@ const Example: React.FunctionComponent<ExampleProps> = (props) => {
     return <h1>An error has occurred"</h1>;
   }
   console.log(data);
+  const {stats, opportunities, person:{name:name_person, pictureThumbnail, professionalHeadline, links, location:{name:name_location, timezone}}, 
+  languages} = data;
+ 
   return (
-      <CardList>
-            {props.children}
-      </CardList>
-
+            <Card
+                name_location={name_location}
+                name_person={name_person}
+                pictureThumbnail={pictureThumbnail}
+                zone={timezone}
+                professionalHeadline={professionalHeadline}
+                opportunities={opportunities}
+                languages={languages}
+                links={links} 
+                stats={stats}           
+            />
   );
 }
  
