@@ -6,7 +6,7 @@ export const fetchTest = () => {
 export const fetchJob = (job:string='react') => {
 
 
-    const baseURL = 'https://search.torre.co/opportunities/_search/?currency=USD%24&page=0&periodicity=hourly&lang=es&size=20&aggregate=false&offset=0'
+    const baseURL = 'https://search.torre.co/opportunities/_search/?currency=USD%24&page=0&periodicity=hourly&lang=es&size=40&aggregate=false&offset=0'
     let _data = {"and":[{"skill/role":{"text":`${job}`,"experience":"potential-to-develop"}},{"type":{"code":"full-time-employment"}},{"status":{"code":"open"}},{"compensationrange":{"minAmount":9,"maxAmount":500,"currency":"USD$","periodicity":"hourly"}}]}
     return fetch(baseURL, {
       method: 'POST',
