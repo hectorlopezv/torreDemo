@@ -19,11 +19,12 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
     //fetch('https://yacdn.org/proxy/' + 'https://torre.co/es/search/people?q=opento%3Afull-time-employment').then(res => console.log(res.json()));
    
     const jobsHandler = (event: any) => {
-        setJob(event.target.value);
-        console.log(Job);
+
         if (Job.length < 1){
             setSearch(false)
-        }
+        }        
+        setJob(event.target.value);
+
     }
 
     const buttonHandler = (event: any) => {
@@ -97,7 +98,9 @@ export interface JobsProps {
 }
  
 const Jobs: React.FunctionComponent<JobsProps> = (props) => {
-    const { data, error, isLoading } = useQuery("react", fetchJob.bind(props.job));
+    console.log('en la funcion jobs', props.job)
+
+    const { data, error, isLoading } = useQuery("react", fetchJob.bind(this, props.job));
 
     if (isLoading) 
     {
@@ -115,8 +118,8 @@ const Jobs: React.FunctionComponent<JobsProps> = (props) => {
         <>
             {results.map((entry:any, index:number) => {
                 return <CardBuss key={index} nameJob={entry.objective} 
-                orgname={entry.organizations[0].name} orgpicture={entry.organizations[0].picture}
-                country={entry.locations[0]} deadline={entry.deadline}
+                orgname={entry.organizations[0] ? entry.organizations[0].name : 'Not Found'} orgpicture={entry.organizations[0] ? entry.organizations[0].picture : "Not Found"}
+                country={entry.locations[0]?entry.locations[0]: "Not found" } deadline={entry.deadline}
                 type={entry.type} idJob={entry.id} compensation={entry.compensation.data}
                 skills={entry.skills}/>
 
