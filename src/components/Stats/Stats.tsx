@@ -1,11 +1,7 @@
 import React from 'react';
 import { GiWeightLiftingUp } from 'react-icons/gi';
-
-
 import { CgWorkAlt } from 'react-icons/cg';
-
 import { VscRemoteExplorer } from 'react-icons/vsc';
-
 import { GiTeacher } from 'react-icons/gi';
 import { TiZoomOutline } from 'react-icons/ti';
 import classes from './Stats.module.css';

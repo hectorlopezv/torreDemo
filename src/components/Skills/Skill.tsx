@@ -1,6 +1,5 @@
 import React from 'react'
 import classes from './Skill.module.css';
-import { SiWorkplace } from "react-icons/si";
 import { GiSoapExperiment } from "react-icons/gi";
 
 export interface SkillProps {

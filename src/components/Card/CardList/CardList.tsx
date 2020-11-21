@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './Card_.module.css';
+import classes from '../Card_.module.css';
 
 
 export interface CardListProps {

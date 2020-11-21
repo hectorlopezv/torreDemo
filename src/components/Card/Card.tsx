@@ -1,12 +1,11 @@
 import React from 'react'
 import classes from './Card_.module.css';
-import Avatar from './Avatar.png';
 import Language from '../Language/Language';
 import Links from '../Links/Links';
 import {CgDollar} from 'react-icons/cg';
 import {GiTimeBomb} from 'react-icons/gi';
 import Stats from '../Stats/Stats';
-import './button.css';
+
 export interface CardProps {
     name_location?:any
     name_person?:any

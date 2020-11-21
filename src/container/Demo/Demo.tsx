@@ -1,16 +1,12 @@
 import React, {useState} from 'react'
-import Torre from '../assests/pictures/Torre.png';
-import {fetchTest, fetchJob} from '../API/Api';
-
+import Torre from '../../assests/pictures/Torre.png';
+import {fetchTest, fetchJob} from '../../API/Api';
 import { useQuery, QueryCache, ReactQueryCacheProvider } from 'react-query';
-import { ReactQueryDevtools } from "react-query-devtools";
-import CardList from '../Card/CardList';
-import Card from '../Card/Card';
-import CardBuss from '../Card/CardBuss';
-
-
+import CardList from '../../components/Card/CardList/CardList';
+import Card from '../../components/Card/Card';
+import CardBuss from '../../components/Card/CardList/CardBuss/CardBuss';
 import Draggable from 'react-draggable'; // The default
-import { Input, Label, Button } from 'semantic-ui-react';
+import { Input, Button } from 'semantic-ui-react';
 export interface DemoProps {    
 }
 

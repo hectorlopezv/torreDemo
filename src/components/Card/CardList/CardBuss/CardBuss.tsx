@@ -1,12 +1,8 @@
 import React from 'react'
-import classes from './Card_.module.css';
-import Avatar from './Avatar.png';
-import Language from '../Language/Language';
-import Links from '../Links/Links';
+import classes from '../../Card_.module.css';
 import {CgDollar} from 'react-icons/cg';
 import {GiTimeBomb} from 'react-icons/gi';
-import Stats from '../Stats/Stats';
-import Skill from '../Skills/Skill';
+import Skill from '../../../Skills/Skill';
 
 export interface CardBussProps {
     nameJob:any;

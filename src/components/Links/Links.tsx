@@ -1,8 +1,7 @@
 import React from 'react';
 import { GiBirdTwitter } from "react-icons/gi";
-import { DiGithubFull} from "react-icons/di";
 import { FiGithub} from "react-icons/fi";
-import { Link} from "react-router-dom";
+
 
 import classes from './Links.module.css';
 export interface LinksProps {
